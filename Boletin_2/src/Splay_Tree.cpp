@@ -60,7 +60,7 @@ public:
     void Delete(int);
     void inOrderPrint(bool);
 };
-
+// Realiza una rotación simple (Zig) 
 void SplayTree::zig(TreeNode *x)
 {
     TreeNode *p = x -> parent;
@@ -93,7 +93,7 @@ void SplayTree::zig(TreeNode *x)
         if (B != NULL) B -> parent = p;
     }
 }
-
+// Realiza una rotación Zig-Zig (dos zig en la misma dirección)
 void SplayTree::zig_zig(TreeNode *x)
 {
     TreeNode *p = x -> parent;
@@ -154,7 +154,7 @@ void SplayTree::zig_zig(TreeNode *x)
         if (C != NULL) C -> parent = p;
     }
 }
-
+// Realiza una rotación Zig-Zag (rotación en direcciones opuestas)
 void SplayTree::zig_zag(TreeNode *x)
 {
     TreeNode *p = x -> parent;
@@ -214,7 +214,7 @@ void SplayTree::zig_zag(TreeNode *x)
         if (C != NULL) C -> parent = p;
     }
 }
-
+// Realiza el proceso Splay, moviendo un nodo hasta la raíz
 void SplayTree::splay(TreeNode *x)
 {
     while (x -> parent != NULL)
@@ -238,7 +238,7 @@ SplayTree::SplayTree(TreeNode *rt)
 {
     this -> root = rt;
 }
-
+// Busca un nodo con una clave específica y lo mueve a la raíz
 TreeNode* SplayTree::find(int x)
 {
     TreeNode *ret = NULL;
@@ -259,7 +259,7 @@ TreeNode* SplayTree::find(int x)
     else if (prev != NULL) splay(prev);
     return ret;
 }
-
+// Inserta un nodo con una clave específica en el árbol y lo lleva a la raíz
 void SplayTree::insert(int x)
 {
     if (root == NULL)
@@ -315,7 +315,7 @@ TreeNode* subtree_min(TreeNode *subRoot)
     while (curr -> left != NULL) curr = curr -> left;
     return curr;
 }
-
+// Elimina un nodo con una clave específica y ajusta el árbol
 void SplayTree::Delete(int x)
 {
     TreeNode *del = find(x);

@@ -40,11 +40,13 @@ void AVLTreeNode<T>::updateValues(){
                       right != nullptr ? right->height : 0) + 1;
 }
 
+// Calcula el factor de balance del nodo
 template <class T>
 int AVLTreeNode<T>::balanceFactor(){
     return (left != nullptr ? left->height : 0) - (right != nullptr ? right->height: 0);
 }
 
+// Realiza una rotación hacia la izquierda y devuelve el nuevo nodo raíz del subárbol
 template <class T>
 AVLTreeNode<T>* AVLTreeNode<T>::left_rotate(){
     AVLTreeNode* R = right;
@@ -57,6 +59,7 @@ AVLTreeNode<T>* AVLTreeNode<T>::left_rotate(){
     return R;
 }
 
+// Realiza una rotación hacia la derecha y devuelve el nuevo nodo raíz del subárbol
 template <class T>
 AVLTreeNode<T>* AVLTreeNode<T>::right_rotate(){
     AVLTreeNode* L = left;
@@ -131,11 +134,11 @@ void AVLTree<T>::clear(){
     
     root = nullptr;
 }
-
+// Inserta un valor en el árbol, asegurando el balance
 template <class T>
 void AVLTree<T>::insert(T value){
     AVLTreeNode<T> **indirect = &root;  // to generalize insertion
-    std::vector<AVLTreeNode<T>**> path;  // to update height values
+    std::vector<AVLTreeNode<T>**> path;  // to update height values 
     
     while (*indirect != nullptr){
         path.push_back(indirect);
@@ -153,6 +156,7 @@ void AVLTree<T>::insert(T value){
     _size++;
 }
 
+// Elimina un nodo con un valor específico, manteniendo el balance
 template <class T>
 void AVLTree<T>::erase(T value){
     AVLTreeNode<T> **indirect = &root;  // to generalize insertion
@@ -223,6 +227,7 @@ void AVLTree<T>::erase(T value){
     _size--;
 }
 
+// Balancea el árbol basado en el camino recorrido hasta el nodo insertado o eliminado
 template <class T>
 void AVLTree<T>::balance(std::vector<AVLTreeNode<T> **> path){  // starting from root
     std::reverse(path.begin(), path.end());
@@ -278,7 +283,7 @@ int AVLTree<T>::find(T value) const{
     else
         return idx + (direct->left ? direct->left->count : 0);
 }
-
+// Encuentra el índice del primer elemento que es mayor que el valor especificado
 template <class T>
 int AVLTree<T>::upper_bound(T value) const{
     
@@ -296,7 +301,7 @@ int AVLTree<T>::upper_bound(T value) const{
     
     return idx;
 }
-
+// Encuentra el índice del primer elemento que es igual o menor que el valor especificado
 template <class T>
 int AVLTree<T>::lower_bound(T value) const{
     

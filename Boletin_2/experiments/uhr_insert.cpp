@@ -179,7 +179,7 @@ int main(int argc, char *argv[])
                 //avl_tree.insert(value);
                 //rb_tree.insert(value);
                 //sp_tree.insert(value);
-                sl.insert(value);
+                //sl.insert(value);
             }
             end_time = std::chrono::high_resolution_clock::now();
 
