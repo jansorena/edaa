@@ -1,4 +1,4 @@
-# Advanced Data Structures and Algorithms
+# Data Structures and Advanced Algorithms
 
 This repository contains experiments and source code for performance testing of various algorithms and data structures.
 
