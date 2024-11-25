@@ -183,7 +183,7 @@ int main(int argc, char *argv[])
             j++;
         }
 
-        // Define min function
+        // Define sum function (we use a non idempotent function)
         auto f = [](std::int64_t a, std::int64_t b) -> std::int64_t {
             return a + b;
         };
